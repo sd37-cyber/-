@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rose Day</title>
+
+<style>
+body{
+  font-family:Arial;
+  background:linear-gradient(135deg,#ffccd5,#ff8fab);
+  text-align:center;
+  padding-top:80px;
+}
+
+.box{
+  background:white;
+  padding:30px;
+  margin:auto;
+  width:320px;
+  border-radius:20px;
+  box-shadow:0 0 20px rgba(0,0,0,0.3);
+  position:relative;
+}
+
+img{
+  width:220px;
+  margin-top:15px;
+  border-radius:12px;
+}
+
+button{
+  padding:12px 22px;
+  font-size:16px;
+  border:none;
+  border-radius:10px;
+  margin:10px;
+  cursor:pointer;
+}
+
+#reject{
+  background:red;
+  color:white;
+  position:absolute;
+}
+
+#accept{background:green;color:white;}
+</style>
+</head>
+
+<body>
+
+<div class="box" id="screen">
+<h2>Today is Rose Day </h2>
+<p>I got something for you...</p>
+
+<button id="accept" onclick="step2()">Accept</button>
+<button id="reject">Reject</button>
+</div>
+
+<script>
+// MOVE REJECT (mobile + desktop)
+let reject=document.getElementById("reject");
+
+function moveReject(){
+  reject.style.left=Math.random()*200+"px";
+  reject.style.top=Math.random()*150+"px";
+}
+
+reject.addEventListener("touchstart",moveReject);
+reject.addEventListener("mouseover",moveReject);
+reject.addEventListener("click",moveReject);
+
+// STEP 2 GRASS
+function step2(){
+document.getElementById("screen").innerHTML=`
+<h2>Oops </h2>
+<p>You got grass instead</p>
+<img src="grass-close-up-royalty-free-image-97719001-1553618759.jpg">
+<p>Are you happy?</p>
+<button id="yes">Yes</button>
+<button onclick="step3()">No</button>
+`;
+
+let yes=document.getElementById("yes");
+
+function moveYes(){
+  yes.style.position="relative";
+  yes.style.left=Math.random()*200+"px";
+}
+
+yes.addEventListener("touchstart",moveYes);
+yes.addEventListener("mouseover",moveYes);
+yes.addEventListener("click",moveYes);
+}
+
+// STEP 3
+function step3(){
+document.getElementById("screen").innerHTML=`
+<h2> I'm just kidding</h2>
+<button onclick="final()">Continue</button>
+`;
+}
+
+// FINAL
+function final(){
+document.getElementById("screen").innerHTML=`
+<h2>Happy Rose Day </h2>
+<p>I got a rose for you</p>
+<img src="Dark-pink-Roses-beautifully-arranged.webp">
+`;
+}
+</script>
+
+</body>
+</html>
