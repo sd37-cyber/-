@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rose Day 🌹</title>
+
+<style>
+body{
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg,#ffd1dc,#ff9aa2);
+  height:100vh;
+  margin:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+
+.container{
+  background:white;
+  padding:30px;
+  border-radius:20px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.25);
+  width:90%;
+  max-width:420px;
+  position:relative;
+}
+
+h1{margin-bottom:10px;}
+
+img{
+  width:240px;
+  margin:18px 0;
+  border-radius:15px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.25);
+}
+
+button{
+  padding:14px 26px;
+  font-size:16px;
+  border:none;
+  border-radius:12px;
+  margin:10px;
+  cursor:pointer;
+}
+
+#accept{background:#4CAF50;color:white;}
+#reject{
+  background:#ff4d4d;
+  color:white;
+  position:absolute;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container" id="box">
+<h1>🌹 Today is Rose Day</h1>
+<h3>Here's a rose for you</h3>
+
+<img src="Dark-pink-Roses-beautifully-arranged.webp">
+
+<br>
+<button id="accept" onclick="accepted()">Accept</button>
+<button id="reject">Reject</button>
+</div>
+
+<script>
+const rejectBtn=document.getElementById("reject");
+
+function moveReject(){
+  const box=document.querySelector(".container");
+  const maxX=box.clientWidth-100;
+  const maxY=box.clientHeight-50;
+
+  const x=Math.random()*maxX;
+  const y=Math.random()*maxY;
+
+  rejectBtn.style.left=x+"px";
+  rejectBtn.style.top=y+"px";
+}
+
+rejectBtn.addEventListener("mouseover",moveReject);
+rejectBtn.addEventListener("click",moveReject);
+
+function accepted(){
+document.getElementById("box").innerHTML=`
+<h1>You got grass instead 😜</h1>
+<img src="grass-close-up-royalty-free-image-97719001-1553618759.jpg">
+<h2>Are you happy?</h2>
+<button id="yes">Yes</button>
+<button id="no" onclick="finalRose()">No</button>
+`;
+
+const yesBtn=document.getElementById("yes");
+
+function moveYes(){
+  const x=Math.random()*200-100;
+  const y=Math.random()*200-100;
+  yesBtn.style.transform=\`translate(\${x}px,\${y}px)\`;
+}
+
+yesBtn.addEventListener("mouseover",moveYes);
+yesBtn.addEventListener("click",moveYes);
+}
+
+function finalRose(){
+document.getElementById("box").innerHTML=`
+<h1>😂 I'm just kidding</h1>
+<h2>Here's your rose 🌹</h2>
+<img src="Dark-pink-Roses-beautifully-arranged.webp">
+<h2>Happy Rose Day 💖</h2>
+`;
+}
+</script>
+
+</body>
+</html>
